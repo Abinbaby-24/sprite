@@ -1,0 +1,121 @@
+.hero {
+    height: 100vh;
+    background-color: #5dbb15;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.title {
+    font-size: 150px;
+    color: white;
+    transform: rotate(-15deg);
+    text-align: center;
+    margin-top: 80px;
+    font-weight: 1000;
+    position: relative;
+    /* Needed for z-index */
+    z-index: 5;
+}
+
+.can {
+    width: 750px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    z-index: 5;
+    pointer-events: none;
+}
+
+
+.apple {
+    width: 200px;
+    position: absolute;
+}
+
+.appleLeft {
+    top: 100px;
+    left: 50px;
+    z-index: 1;
+}
+
+.appleRight {
+    bottom: 100px;
+    right: 50px;
+    top: 100px;
+}
+
+.appleRight2 {
+    bottom: 300px;
+    right: 40px;
+    transform: rotate(-10deg);
+
+}
+
+.appleRight3 {
+    bottom: 50px;
+    right: 150px;
+    transform: rotate(-10deg);
+}
+
+.appleLeft2 {
+    bottom: 200px;
+    left: 10px;
+    transform: rotate(-30deg);
+}
+
+.leaf {
+    width: 200px;
+    position: absolute;
+}
+
+.leaf1 {
+    bottom: 80px;
+    left: 50%;
+    top: 25%;
+    transform: rotate(90deg);
+    z-index: 1;
+}
+
+.leaf2 {
+    bottom: 400px;
+    left: 20%;
+
+
+}
+
+.leaf3 {
+    bottom: 30px;
+    left: 25%;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    cursor: pointer;
+}
+
+.btn {
+    background-color: white;
+    color: green;
+    padding: 15px 60px;
+    border-radius: 100px;
+    font-weight: 1000;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+        background-color: green;
+        color: white;
+    }
+}
