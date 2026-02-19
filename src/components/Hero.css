@@ -1,20 +1,18 @@
 .hero {
     width: 100%;
     min-height: 100vh;
+    min-height: 100svh;
     background-color: #5dbb15;
     position: relative;
     overflow: hidden;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem 1rem;
 
+    padding: 80px 1rem 2rem;
     z-index: 1;
-
-
-    padding-top: 80px;
-
 }
 
 .title {
@@ -27,17 +25,13 @@
 }
 
 .can {
-
     width: clamp(200px, 60vw, 600px);
-    transform: translate(-50%, -50%) rotate(-15deg);
-    z-index: 5;
-    pointer-events: none;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%) rotate(-15deg);
     z-index: 5;
-
+    pointer-events: none;
 }
 
 

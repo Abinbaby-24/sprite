@@ -6,7 +6,7 @@ function Navbar() {
 
     return (
         <nav className="navbar">
-            <div className="logo">APPLE</div>
+            <div className="logo">SPRITE</div>
 
             <div className={`nav-links ${menuOpen ? "active" : ""}`}>
                 <a href="#">PRODUCTS</a>

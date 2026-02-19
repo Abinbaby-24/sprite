@@ -3,7 +3,7 @@
 .navbar {
     width: 100%;
     padding: 1rem clamp(1rem, 4vw, 3rem);
-    background-color: #5dbb15;
+    background-color: #1f450284;
     color: white;
 
     display: flex;
