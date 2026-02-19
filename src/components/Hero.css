@@ -131,6 +131,8 @@
     font-size: clamp(0.9rem, 2vw, 1.2rem);
     border: none;
     cursor: pointer;
+    width: 100%;
+
     transition: all 0.3s ease
 }
 
@@ -161,6 +163,18 @@
 
     .can {
         width: clamp(600px, 85vw, 800px);
+    }
+
+    .leaf1,
+    .leaf2 {
+        width: clamp(100px, 45vw, 180px);
+        opacity: 0.8;
+        top: 10%;
+    }
+
+    .leaf3 {
+        width: clamp(100px, 45vw, 180px);
+        opacity: 0.8;
     }
 
 }

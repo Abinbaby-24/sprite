@@ -166,8 +166,8 @@
 
 .leaf-right {
     right: 50%;
-    top: 5%;
-    transform: rotate(90deg);
+    top: 20%;
+    transform: translate(-50%, -50%);
 }
 
 /* ================= MOBILE CLEANUP ================= */
@@ -191,7 +191,10 @@
 
     .fruit-left2,
     .fruit-right2,
-    .leaf-right {
-        display: none;
+    .leaf-right,
+    .leaf-left {
+        width: clamp(100px, 22vw, 300px);
+        opacity: 80%;
+
     }
 }
