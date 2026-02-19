@@ -9,6 +9,12 @@
     align-items: center;
     justify-content: center;
     padding: 2rem 1rem;
+
+    z-index: 1;
+
+
+    padding-top: 80px;
+
 }
 
 .title {

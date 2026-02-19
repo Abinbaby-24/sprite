@@ -1,14 +1,30 @@
+import { useState } from "react";
 import "./Navbar.css";
 
 function Navbar() {
+    const [menuOpen, setMenuOpen] = useState(false);
+
     return (
-        <div className="navbar">
-            <div>PRODUCTS</div>
-            <div>FLAVOURS</div>
-            <div>CUSTOMER SERVICES</div>
-            <div>POLICIES</div>
-            <div>T&C</div>
-        </div>
+        <nav className="navbar">
+            <div className="logo">APPLE</div>
+
+            <div className={`nav-links ${menuOpen ? "active" : ""}`}>
+                <a href="#">PRODUCTS</a>
+                <a href="#">FLAVOURS</a>
+                <a href="#">CUSTOMER SERVICES</a>
+                <a href="#">POLICIES</a>
+                <a href="#">T&C</a>
+            </div>
+
+            <div
+                className={`hamburger ${menuOpen ? "open" : ""}`}
+                onClick={() => setMenuOpen(!menuOpen)}
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
     );
 }
 
