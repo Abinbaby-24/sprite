@@ -150,12 +150,17 @@
 
     .title {
         transform: rotate(-10deg);
+        font-size: clamp(8rem, 28vw, 12rem);
     }
 
     .buttons {
         flex-direction: column;
         gap: 1rem;
         bottom: 20px;
+    }
+
+    .can {
+        width: clamp(600px, 85vw, 800px);
     }
 
 }

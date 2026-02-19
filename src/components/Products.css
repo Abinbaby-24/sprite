@@ -172,11 +172,11 @@
 
     .can1,
     .can2 {
-        width: clamp(180px, 70vw, 320px);
+        width: clamp(500px, 70vw, 500px);
 
         left: 50%;
         right: auto;
-        top: 15%;
+        top: 1%;
 
         transform: translateX(-50%);
     }
