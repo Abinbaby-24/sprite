@@ -78,13 +78,13 @@
 }
 
 .product-info1 {
-    bottom: 30px;
+    bottom: 5%;
     text-align: left;
 }
 
 .product-info2 {
-    top: 60%;
-    text-align: center;
+    bottom: 5%;
+    text-align: left;
 }
 
 .product-info1 h3,
@@ -104,11 +104,13 @@
 }
 
 .can1 {
-    left: -15%;
+    left: -10%;
+    top: 2%;
 }
 
 .can2 {
-    right: -15%;
+    right: -10%;
+    top: 2%;
 }
 
 /* ================= FRUITS & LEAVES ================= */
@@ -119,7 +121,7 @@
 .fruit-right2,
 .leaf-left,
 .leaf-right {
-    width: clamp(60px, 15vw, 150px);
+    width: clamp(100px, 15vw, 200px);
     position: absolute;
     pointer-events: none;
 }
