@@ -172,8 +172,13 @@
 
     .can1,
     .can2 {
-        width: clamp(180px, 70vw, 350px);
-        top: 25%;
+        width: clamp(180px, 70vw, 320px);
+
+        left: 50%;
+        right: auto;
+        top: 15%;
+
+        transform: translateX(-50%);
     }
 
     .fruit-left2,
