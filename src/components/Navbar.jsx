@@ -9,10 +9,9 @@ function Navbar() {
             <div className="logo">SPRITE</div>
 
             <div className={`nav-links ${menuOpen ? "active" : ""}`}>
-                <a href="#">PRODUCTS</a>
-                <a href="#">FLAVOURS</a>
+                <a href="#products">FLAVOURS</a>
                 <a href="#">CUSTOMER SERVICES</a>
-                <a href="#">POLICIES</a>
+                <a href="#about">ABOUT US</a>
                 <a href="#">T&C</a>
             </div>
 

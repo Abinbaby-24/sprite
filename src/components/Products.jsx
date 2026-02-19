@@ -1,15 +1,20 @@
 import "./Products.css";
 import strawberryCan from "../assets/strawberry-can.png";
 import blueberryCan from "../assets/blueberry-can.png";
+import mangoCan from "../assets/mango-can.png";
+import guavaCan from "../assets/guava-can.png";
+
 import strawberry from "../assets/strawberry.png";
+import mango from "../assets/mango.png";
 import blueberry from "../assets/blueberry.png";
+import guava from "../assets/guava.png";
 import leaf from "../assets/leaf.png";
 import sprite from "../assets/sprite.png";
 
 function Products() {
     return (
-        <section className="products">
-            <h2 className="products-title">OTHER PRODUCTS</h2>
+        <section id="products" className="products">
+            <h2 className="products-title">OTHER FLAVOURS</h2>
             <img src={sprite} className="sprite" />
 
             <div className="product-container">
@@ -43,6 +48,42 @@ function Products() {
                     <div className="product-info2">
                         <h3>BLUEBERRY</h3>
                         <p>Blueberry Fruit Pulp: 20%</p>
+                        <p>Water: 77%</p>
+                        <p>Sugar / Sweetener: 2.5%</p>
+                        <p>Lemon Juice / Acidity Regulator: 0.3%</p>
+                        <p>Permitted Natural Flavour: 0.2%</p>
+                    </div>
+                </div>
+
+
+                {/* Mango Card */}
+                <div className="product-card mango">
+                    <img src={mangoCan} className="can2" />
+                    <img src={mango} className="fruit fruit-right" />
+                    <img src={mango} className="fruit fruit-right2" />
+                    <img src={leaf} className="leaf leaf-right" />
+
+                    <div className="product-info2">
+                        <h3>MANGO</h3>
+                        <p>Mango Fruit Pulp: 20%</p>
+                        <p>Water: 77%</p>
+                        <p>Sugar / Sweetener: 2.5%</p>
+                        <p>Lemon Juice / Acidity Regulator: 0.3%</p>
+                        <p>Permitted Natural Flavour: 0.2%</p>
+                    </div>
+                </div>
+
+
+                {/* Guava Card */}
+                <div className="product-card guava">
+                    <img src={guavaCan} className="can2" />
+                    <img src={guava} className="fruit fruit-right" />
+                    <img src={guava} className="fruit fruit-right2" />
+                    <img src={leaf} className="leaf leaf-right" />
+
+                    <div className="product-info2">
+                        <h3>GUAVA</h3>
+                        <p>Guava Fruit Pulp: 20%</p>
                         <p>Water: 77%</p>
                         <p>Sugar / Sweetener: 2.5%</p>
                         <p>Lemon Juice / Acidity Regulator: 0.3%</p>

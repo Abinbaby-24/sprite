@@ -26,7 +26,7 @@ function Hero() {
 
             <div className="buttons">
                 <button className="btn">ADD TO CART</button>
-                <button className="btn">SERVICES</button>
+                <a href="#products"><button className="btn">MORE FLAVOURS</button>  </a>
             </div>
         </div>
 

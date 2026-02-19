@@ -66,6 +66,14 @@
     background: linear-gradient(135deg, #330851, #6d18bd);
 }
 
+.mango {
+    background: linear-gradient(135deg, #ccad10, #f1e905);
+}
+
+.guava {
+    background: linear-gradient(135deg, #ee0390, #ef3252);
+}
+
 /* ================= PRODUCT INFO ================= */
 
 .product-info1,

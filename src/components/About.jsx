@@ -8,7 +8,7 @@ function About() {
             <img src={sprite} className="sprite1" />
 
 
-            <div className="about-grid">
+            <div id="about" className="about-grid">
 
                 <div className="about-card">
                     <h3>Who We Are</h3>
