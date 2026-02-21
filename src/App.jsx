@@ -11,9 +11,9 @@ function App() {
     <>
       <Navbar />
       <Hero />
+      <Cart />
       <Products />
       <About />
-      <Cart />
     </>
   );
 }
