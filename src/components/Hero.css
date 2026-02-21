@@ -264,7 +264,8 @@
     }
 
     .hero {
-        padding-top: 4rem;
+        padding-top: 6rem;
+        padding: 80px 1rem 2rem;
     }
 
     .title {

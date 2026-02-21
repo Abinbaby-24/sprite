@@ -14,7 +14,12 @@
     top: 0;
     left: 0;
 
-    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* ← must be higher than hero's z-index: 5 */
 }
 
 /* ================= LOGO ================= */
@@ -88,16 +93,19 @@
 }
 
 /* ================= MOBILE ================= */
-
 @media (max-width: 768px) {
 
     .nav-links {
         position: absolute;
         top: 70px;
-        left: 0;
-        width: 100%;
+        left: auto;
+        /* ← remove left: 0 effect */
+        right: 0;
+        /* ← anchor to right side */
+        width: 50%;
+        /* ← half screen width, adjust to taste */
 
-        background-color: #5dbb15;
+
 
         flex-direction: column;
         align-items: center;
@@ -105,12 +113,15 @@
 
         padding: 2rem 0;
 
-        transform: translateY(-120%);
+        transform: translateX(120%);
+        /* ← slide from right instead of top */
         transition: transform 0.3s ease;
+        z-index: 999;
     }
 
     .nav-links.active {
-        transform: translateY(0);
+        transform: translateX(0);
+        /* ← slide in from right */
     }
 
     .hamburger {
