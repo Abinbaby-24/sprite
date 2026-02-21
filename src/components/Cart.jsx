@@ -13,16 +13,9 @@ import blueberry from "../assets/blueberry.png";
 import guava from "../assets/guava.png";
 import sprite from "../assets/sprite.png";
 
-import lal from "../assets/mohanlal.jpeg"
+import lal from "../assets/mohanlal.jpeg";
 
-// ============================================================
-// 🖼️  PAYMENT SUCCESS IMAGE
-// Step 1 — import your image at the top of this file:
-//   import payImg from "../assets/your-photo.png";
-// Step 2 — replace `null` on the line below with `payImg`
-const PAYMENT_SUCCESS_IMAGE = null; // ← put your imported image here
-// ============================================================
-
+const PAYMENT_SUCCESS_IMAGE = null;
 const BG_LOGO_IMAGE = sprite;
 
 const PRODUCT_IMAGES = {
@@ -88,56 +81,43 @@ function PaymentSuccessModal({ total, onClose }) {
           }
         `}</style>
 
-                {/* ── Your photo goes here ── */}
                 <div style={{
                     width: "100%", borderRadius: 16, overflow: "hidden",
-                    marginBottom: 20, background: "#f0fdf4",
-                    minHeight: 180,
+                    marginBottom: 20, background: "#f0fdf4", minHeight: 180,
                     display: "flex", alignItems: "center", justifyContent: "center",
                     border: "2px dashed #86efac",
                 }}>
                     {lal ? (
-                        <img
-                            src={lal}
-                            alt="Payment success"
-                            style={{ width: "100%", objectFit: "cover", display: "block", borderRadius: 14 }}
-                        />
+                        <img src={lal} alt="Payment success"
+                            style={{ width: "100%", objectFit: "cover", display: "block", borderRadius: 14 }} />
                     ) : (
                         <div style={{ padding: 28, textAlign: "center" }}>
                             <div style={{ fontSize: 52, marginBottom: 10 }}>🖼️</div>
                             <div style={{ fontSize: 12, color: "#aaa", lineHeight: 1.6 }}>
-                                Your photo will appear here.<br />
-                                Import it and set{" "}
-                                <code style={{ background: "#f3f3f3", padding: "1px 5px", borderRadius: 3, fontSize: 11 }}>
-                                    PAYMENT_SUCCESS_IMAGE
-                                </code>{" "}
-                                at the top of the file.
+                                Your photo will appear here.
                             </div>
                         </div>
                     )}
                 </div>
 
-                {/* Message */}
-                <div style={{ fontSize: 36, marginBottom: 6 }}></div>
+                <div style={{ fontSize: 36, marginBottom: 6 }}>✌️</div>
                 <div style={{ fontWeight: 900, fontSize: 22, color: "#166534", letterSpacing: 1, marginBottom: 6 }}>
-
-                    THESE PRODUCTS ARE DOESN'T EVEN EXISTED
-
+                    THIS IS A FAN-MADE PROJECT
                 </div>
-                <div style={{ fontSize: 14, color: "#666", marginBottom: 4 }}>
-                    A FAN-MADE PROJECT
+                <div style={{ fontSize: 14, color: "#666", marginBottom: 16 }}>
+                    THESE PRODUCTS DON'T EVEN EXIST
                 </div>
 
                 <button
                     onClick={onClose}
                     style={{
                         width: "100%", padding: "13px 0", borderRadius: 12,
-                        background: "#5cb800", border: "none", color: "white",
+                        background: "#5dbb15", border: "none", color: "white",
                         fontWeight: 900, fontSize: 15, letterSpacing: 2,
                         cursor: "pointer", textTransform: "uppercase", transition: "background 0.2s",
                     }}
                     onMouseEnter={e => e.currentTarget.style.background = "#4aaa00"}
-                    onMouseLeave={e => e.currentTarget.style.background = "#5cb800"}
+                    onMouseLeave={e => e.currentTarget.style.background = "#5dbb15"}
                 >
                     APO OKE BYE
                 </button>
@@ -226,10 +206,8 @@ function ProductCard({ product, onAddToCart, fruitPop, onViewCart }) {
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, fontFamily: "'Trebuchet MS', sans-serif" }}>
 
-            {/* Card */}
             <div style={{
-                width: 200, height: 240, borderRadius: 20,
-                background: product.bg,
+                width: 200, height: 240, borderRadius: 20, background: product.bg,
                 display: "flex", alignItems: "center", justifyContent: "center",
                 border: "3px solid white", boxShadow: `0 8px 36px rgba(0,0,0,0.3)`,
                 cursor: "pointer", transition: "transform 0.2s, box-shadow 0.2s",
@@ -265,36 +243,24 @@ function ProductCard({ product, onAddToCart, fruitPop, onViewCart }) {
                 </div>
             </div>
 
-            {/* Name */}
             <div style={{ fontWeight: 700, fontSize: 13, color: "rgba(255,255,255,0.92)", letterSpacing: 0.5, textAlign: "center" }}>{product.name}</div>
-
-            {/* Price */}
             <div style={{ fontWeight: 900, fontSize: 22, color: "#fff", letterSpacing: 1, textShadow: "0 1px 6px rgba(0,0,0,0.25)" }}>₹{PRICE * qty}</div>
 
-            {/* Qty Selector */}
             <div style={{ display: "flex", alignItems: "center", background: "rgba(255,255,255,0.15)", borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.35)" }}>
-
-                <button
-                    onClick={() => setQty(q => Math.max(1, q - 1))}
+                <button onClick={() => setQty(q => Math.max(1, q - 1))}
                     style={{ width: 34, height: 34, background: "none", border: "none", color: "white", fontSize: 22, fontWeight: 900, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}
                     onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.2)"}
                     onMouseLeave={e => e.currentTarget.style.background = "none"}
                 >−</button>
-
                 <div style={{ width: 44, height: 34, background: "rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: 16, color: "white" }}>{qty}</div>
-
-                <button
-                    onClick={() => setQty(q => q + 1)}
+                <button onClick={() => setQty(q => q + 1)}
                     style={{ width: 34, height: 34, background: "none", border: "none", color: "white", fontSize: 22, fontWeight: 900, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}
                     onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.2)"}
                     onMouseLeave={e => e.currentTarget.style.background = "none"}
                 >+</button>
             </div>
 
-            {/* ADD Button */}
-            <button
-                ref={addBtnRef}
-                onClick={handleAdd}
+            <button ref={addBtnRef} onClick={handleAdd}
                 style={{
                     width: 200, padding: "10px 0", borderRadius: 8,
                     background: added ? "#22c55e" : "rgba(255,255,255,0.22)",
@@ -310,9 +276,7 @@ function ProductCard({ product, onAddToCart, fruitPop, onViewCart }) {
                 {added ? "Added!" : "Add"}
             </button>
 
-            {/* VIEW CART */}
-            <button
-                onClick={onViewCart}
+            <button onClick={onViewCart}
                 style={{
                     width: 200, padding: "8px 0", borderRadius: 8,
                     background: "rgba(0,0,0,0.2)", border: "1.5px solid rgba(255,255,255,0.4)",
@@ -331,11 +295,7 @@ function ProductCard({ product, onAddToCart, fruitPop, onViewCart }) {
 /* ---------- Cart Modal ---------- */
 function CartModal({ cart, onClose, onClearCart, onPaySuccess }) {
     const total = cart.reduce((s, i) => s + PRICE * i.qty, 0);
-
-    const handleProceed = () => {
-        onClose();
-        onPaySuccess(total);
-    };
+    const handleProceed = () => { onClose(); onPaySuccess(total); };
 
     return (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center" }} onClick={onClose}>
@@ -385,14 +345,14 @@ function CartModal({ cart, onClose, onClearCart, onPaySuccess }) {
                     disabled={cart.length === 0}
                     style={{
                         marginTop: 20, width: "100%", padding: "14px 0", borderRadius: 12,
-                        background: cart.length === 0 ? "#ccc" : "#5cb800",
+                        background: cart.length === 0 ? "#ccc" : "#5dbb15",
                         border: "none", color: "white", fontWeight: 900, fontSize: 15,
                         letterSpacing: 2, cursor: cart.length === 0 ? "not-allowed" : "pointer",
                         textTransform: "uppercase", transition: "background 0.2s",
                         display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
                     }}
                     onMouseEnter={e => { if (cart.length > 0) e.currentTarget.style.background = "#4aaa00"; }}
-                    onMouseLeave={e => { if (cart.length > 0) e.currentTarget.style.background = "#5cb800"; }}
+                    onMouseLeave={e => { if (cart.length > 0) e.currentTarget.style.background = "#5dbb15"; }}
                 >
                     💳 Proceed to Pay {cart.length > 0 && `· ₹${total}`}
                 </button>
@@ -433,28 +393,24 @@ export default function AddToCart() {
     };
 
     return (
-        <div style={{ minHeight: "100vh", background: "#5dbb15", padding: "28px 24px", fontFamily: "'Trebuchet MS', sans-serif", position: "relative", overflow: "hidden" }}>
+        // ── min-height removed so page doesn't stretch beyond content ──
+        <div style={{
+            background: "#5dbb15",
+            padding: "28px 24px 48px",
+            fontFamily: "'Trebuchet MS', sans-serif",
+            position: "relative",
+            overflow: "hidden",
+        }}>
 
-            {/* ── Global responsive styles ── */}
             <style>{`
-        @keyframes slideUp {
-          from { transform: translateY(30px); opacity: 0; }
-          to   { transform: translateY(0);    opacity: 1; }
-        }
-
+        /* ── Responsive grid centering ── */
         #addtocart {
           display: flex;
           flex-wrap: wrap;
           gap: 28px;
-          justify-content: flex-start;
+          justify-content: center;   /* center on ALL screen sizes */
           position: relative;
           z-index: 1;
-        }
-
-        @media (max-width: 640px) {
-          #addtocart {
-            justify-content: center;
-          }
         }
       `}</style>
 
@@ -487,7 +443,7 @@ export default function AddToCart() {
                 </button>
             </div>
 
-            {/* ✅ Products grid — id for anchor linking, @media handles mobile centering */}
+            {/* ✅ Cards grid — centered on all screen sizes, no vacant space */}
             <div id="addtocart">
                 {products.map(product => (
                     <ProductCard

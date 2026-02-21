@@ -10,9 +10,9 @@ function Navbar() {
 
             <div className={`nav-links ${menuOpen ? "active" : ""}`}>
                 <a href="#products">FLAVOURS</a>
-                <a href="#">CUSTOMER SERVICES</a>
+                <a href="#services">CUSTOMER SERVICES</a>
                 <a href="#about">ABOUT US</a>
-                <a href="#">T&C</a>
+                <a href="#footer">T&C</a>
             </div>
 
             <div
