@@ -1,6 +1,12 @@
 /* =====================================================
    HERO – base layout  (unchanged from your original)
    ===================================================== */
+/* ── Smooth scroll — must be on both html AND body ── */
+html,
+body {
+    scroll-behavior: smooth;
+}
+
 .hero {
     width: 100%;
     min-height: 100vh;
@@ -19,6 +25,8 @@
     /* smooth background colour transition between slides */
     transition: background-color 0.6s ease;
 }
+
+
 
 /* =====================================================
    TITLE
@@ -215,6 +223,7 @@
 /* =====================================================
    BUTTONS  (unchanged)
    ===================================================== */
+/* ── Remove scroll-behavior from .buttons (does nothing there) ── */
 .buttons {
     position: absolute;
     bottom: 40px;
@@ -223,8 +232,10 @@
     justify-content: center;
     gap: 1.5rem;
     flex-wrap: wrap;
+    /* ❌ remove scroll-behavior: smooth from here */
 }
 
+/* ── Same for .btn ── */
 .btn {
     background-color: white;
     color: green;
@@ -236,9 +247,7 @@
     cursor: pointer;
     width: 100%;
     transition: all 0.3s ease;
-    text-decoration: none !important;
-    /* ← force override */
-    color: inherit;
+    /* ❌ remove scroll-behavior: smooth from here too */
 }
 
 .btn:hover {

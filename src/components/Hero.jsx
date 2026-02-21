@@ -115,7 +115,7 @@ export default function Hero() {
 
             {/* ── Buttons (constant) ────────────────────────────────── */}
             <div className="buttons">
-                <button className="btn"><a href="#addtocart">ADD TO CART</a></button>
+                <button className="btn"><a href="#addtocart" className="btn2">ADD TO CART</a></button>
 
                 <button className="btn"> <a href="#products" className="btn2">MORE FLAVOURS</a></button>
 

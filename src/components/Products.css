@@ -6,7 +6,9 @@
     text-align: center;
     position: relative;
     overflow: hidden;
+    scroll-behavior: smooth;
 }
+
 
 /* Background Sprite */
 .sprite {

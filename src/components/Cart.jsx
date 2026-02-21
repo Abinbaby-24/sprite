@@ -14,9 +14,7 @@ import guava from "../assets/guava.png";
 import sprite from "../assets/sprite.png";
 
 import lal from "../assets/mohanlal.jpeg"
-<section id="addtocart">
 
-</section>
 // ============================================================
 // 🖼️  PAYMENT SUCCESS IMAGE
 // Step 1 — import your image at the top of this file:
