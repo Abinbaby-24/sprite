@@ -118,12 +118,14 @@ function PaymentSuccessModal({ total, onClose }) {
                 </div>
 
                 {/* Message */}
-                <div style={{ fontSize: 36, marginBottom: 6 }}>✌️</div>
+                <div style={{ fontSize: 36, marginBottom: 6 }}></div>
                 <div style={{ fontWeight: 900, fontSize: 22, color: "#166534", letterSpacing: 1, marginBottom: 6 }}>
-                    THIS IS A FAN-MADE PROJECT
+
+                    THESE PRODUCTS ARE DOESN'T EVEN EXISTED
+
                 </div>
                 <div style={{ fontSize: 14, color: "#666", marginBottom: 4 }}>
-                    THESE PRODUCTS ARE DOESN'T EVEN EXISTED
+                    A FAN-MADE PROJECT
                 </div>
 
                 <button
