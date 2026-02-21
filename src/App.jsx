@@ -11,8 +11,8 @@ function App() {
     <>
       <Navbar />
       <Hero />
-      <Products />
       <Cart />
+      <Products />
       <About />
     </>
   );

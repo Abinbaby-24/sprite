@@ -14,7 +14,7 @@ import leaf from "../assets/leaf.png";
 function Products() {
     return (
         <section id="products" className="products">
-            <h2 className="products-title">OTHER FLAVOURS</h2>
+            <h2 className="products-title">PRODUCT DESCRIPTION</h2>
             <img src={sprite} className="sprite" />
 
             <div className="product-container">

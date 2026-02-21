@@ -97,14 +97,12 @@ function PaymentSuccessModal({ total, onClose }) {
                     border: "2px dashed #86efac",
                 }}>
                     {lal ? (
-                        /* ✅ Shows your image once PAYMENT_SUCCESS_IMAGE is set */
                         <img
                             src={lal}
                             alt="Payment success"
                             style={{ width: "100%", objectFit: "cover", display: "block", borderRadius: 14 }}
                         />
                     ) : (
-                        /* 📌 Placeholder until you add your image */
                         <div style={{ padding: 28, textAlign: "center" }}>
                             <div style={{ fontSize: 52, marginBottom: 10 }}>🖼️</div>
                             <div style={{ fontSize: 12, color: "#aaa", lineHeight: 1.6 }}>
@@ -120,25 +118,24 @@ function PaymentSuccessModal({ total, onClose }) {
                 </div>
 
                 {/* Message */}
-                <div style={{ fontSize: 36, marginBottom: 6 }}></div>
+                <div style={{ fontSize: 36, marginBottom: 6 }}>✌️</div>
                 <div style={{ fontWeight: 900, fontSize: 22, color: "#166534", letterSpacing: 1, marginBottom: 6 }}>
-                    THESE PRODUCTS ARE DOESN'T EVEN EXISTED
+                    THIS IS A FAN-MADE PROJECT
                 </div>
                 <div style={{ fontSize: 14, color: "#666", marginBottom: 4 }}>
-                    A FAN-MADE PROJECT
+                    THESE PRODUCTS ARE DOESN'T EVEN EXISTED
                 </div>
-
 
                 <button
                     onClick={onClose}
                     style={{
                         width: "100%", padding: "13px 0", borderRadius: 12,
-                        background: " #5dbb15", border: "none", color: "white",
+                        background: "#5cb800", border: "none", color: "white",
                         fontWeight: 900, fontSize: 15, letterSpacing: 2,
                         cursor: "pointer", textTransform: "uppercase", transition: "background 0.2s",
                     }}
-                    onMouseEnter={e => e.currentTarget.style.background = "#5dbb15"}
-                    onMouseLeave={e => e.currentTarget.style.background = "#5dbb15"}
+                    onMouseEnter={e => e.currentTarget.style.background = "#4aaa00"}
+                    onMouseLeave={e => e.currentTarget.style.background = "#5cb800"}
                 >
                     APO OKE BYE
                 </button>
@@ -275,7 +272,6 @@ function ProductCard({ product, onAddToCart, fruitPop, onViewCart }) {
             {/* Qty Selector */}
             <div style={{ display: "flex", alignItems: "center", background: "rgba(255,255,255,0.15)", borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.35)" }}>
 
-                {/* ─ MINUS — white ─ */}
                 <button
                     onClick={() => setQty(q => Math.max(1, q - 1))}
                     style={{ width: 34, height: 34, background: "none", border: "none", color: "white", fontSize: 22, fontWeight: 900, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}
@@ -285,7 +281,6 @@ function ProductCard({ product, onAddToCart, fruitPop, onViewCart }) {
 
                 <div style={{ width: 44, height: 34, background: "rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: 16, color: "white" }}>{qty}</div>
 
-                {/* ─ PLUS — white ─ */}
                 <button
                     onClick={() => setQty(q => q + 1)}
                     style={{ width: 34, height: 34, background: "none", border: "none", color: "white", fontSize: 22, fontWeight: 900, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}
@@ -388,7 +383,7 @@ function CartModal({ cart, onClose, onClearCart, onPaySuccess }) {
                     disabled={cart.length === 0}
                     style={{
                         marginTop: 20, width: "100%", padding: "14px 0", borderRadius: 12,
-                        background: cart.length === 0 ? "#ccc" : " #5dbb15",
+                        background: cart.length === 0 ? "#ccc" : "#5cb800",
                         border: "none", color: "white", fontWeight: 900, fontSize: 15,
                         letterSpacing: 2, cursor: cart.length === 0 ? "not-allowed" : "pointer",
                         textTransform: "uppercase", transition: "background 0.2s",
@@ -436,8 +431,32 @@ export default function AddToCart() {
     };
 
     return (
-        <div style={{ minHeight: "100vh", background: "#5cb800", padding: "28px 24px", fontFamily: "'Trebuchet MS', sans-serif", position: "relative", overflow: "hidden" }}>
+        <div style={{ minHeight: "100vh", background: "#5dbb15", padding: "28px 24px", fontFamily: "'Trebuchet MS', sans-serif", position: "relative", overflow: "hidden" }}>
 
+            {/* ── Global responsive styles ── */}
+            <style>{`
+        @keyframes slideUp {
+          from { transform: translateY(30px); opacity: 0; }
+          to   { transform: translateY(0);    opacity: 1; }
+        }
+
+        #addtocart {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 28px;
+          justify-content: flex-start;
+          position: relative;
+          z-index: 1;
+        }
+
+        @media (max-width: 640px) {
+          #addtocart {
+            justify-content: center;
+          }
+        }
+      `}</style>
+
+            {/* Background watermark */}
             <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 {BG_LOGO_IMAGE
                     ? <img src={BG_LOGO_IMAGE} alt="" style={{ width: "60vw", maxWidth: 520, opacity: 0.09, objectFit: "contain" }} />
@@ -447,21 +466,35 @@ export default function AddToCart() {
 
             {fruitPop.particles.map(p => <FruitParticle key={p.id} {...p} onDone={fruitPop.remove} />)}
 
+            {/* Header */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 36, position: "relative", zIndex: 1 }}>
                 <h1 style={{ color: "white", fontWeight: 900, fontSize: 22, letterSpacing: 3, textTransform: "uppercase", margin: 0, textShadow: "0 2px 8px rgba(0,0,0,0.15)" }}>Add to Cart</h1>
-                <button onClick={() => setCartOpen(true)} style={{ background: "rgba(255,255,255,0.2)", border: "2px solid white", borderRadius: 40, padding: "8px 20px", color: "white", fontWeight: 900, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", gap: 8, letterSpacing: 1, transition: "background 0.2s" }}
+                <button
+                    onClick={() => setCartOpen(true)}
+                    style={{ background: "rgba(255,255,255,0.2)", border: "2px solid white", borderRadius: 40, padding: "8px 20px", color: "white", fontWeight: 900, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", gap: 8, letterSpacing: 1, transition: "background 0.2s" }}
                     onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.32)"}
                     onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,0.2)"}
                 >
                     🛒
-                    {totalItems > 0 && <span style={{ background: "#ff3d3d", borderRadius: "50%", width: 22, height: 22, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 900 }}>{totalItems}</span>}
+                    {totalItems > 0 && (
+                        <span style={{ background: "#ff3d3d", borderRadius: "50%", width: 22, height: 22, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 900 }}>
+                            {totalItems}
+                        </span>
+                    )}
                     Cart
                 </button>
             </div>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 28, justifyContent: "flex-start", position: "relative", zIndex: 1 }}>
+            {/* ✅ Products grid — id for anchor linking, @media handles mobile centering */}
+            <div id="addtocart">
                 {products.map(product => (
-                    <ProductCard key={product.id} product={product} onAddToCart={handleAddToCart} fruitPop={fruitPop} onViewCart={() => setCartOpen(true)} />
+                    <ProductCard
+                        key={product.id}
+                        product={product}
+                        onAddToCart={handleAddToCart}
+                        fruitPop={fruitPop}
+                        onViewCart={() => setCartOpen(true)}
+                    />
                 ))}
             </div>
 
