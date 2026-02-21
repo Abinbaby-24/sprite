@@ -9,6 +9,11 @@
     overflow: hidden;
 }
 
+h1 {
+    color: white;
+    align-items: left;
+}
+
 /* ================= BACKGROUND SPRITE ================= */
 
 .sprite1 {

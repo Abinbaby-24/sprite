@@ -8,8 +8,8 @@ import strawberry from "../assets/strawberry.png";
 import mango from "../assets/mango.png";
 import blueberry from "../assets/blueberry.png";
 import guava from "../assets/guava.png";
-import leaf from "../assets/leaf.png";
 import sprite from "../assets/sprite.png";
+import leaf from "../assets/leaf.png";
 
 function Products() {
     return (

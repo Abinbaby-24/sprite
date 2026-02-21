@@ -51,7 +51,9 @@
 .apple,
 .leaf {
     position: absolute;
-    width: clamp(60px, 15vw, 180px);
+    width: clamp(200px, 50vw, 250px);
+    /* ← was clamp(50px, 18vw, 120px) */
+
     pointer-events: none;
 }
 
@@ -221,7 +223,6 @@
     justify-content: center;
     gap: 1.5rem;
     flex-wrap: wrap;
-    cursor: pointer;
 }
 
 .btn {
@@ -235,6 +236,9 @@
     cursor: pointer;
     width: 100%;
     transition: all 0.3s ease;
+    text-decoration: none !important;
+    /* ← force override */
+    color: inherit;
 }
 
 .btn:hover {
@@ -242,9 +246,14 @@
     color: rgb(244, 240, 240);
 }
 
-.btn2 {
-    width: 100%;
+.btn a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
 }
+
+
 
 /* =====================================================
    MOBILE  (unchanged positions, same breakpoints)
@@ -259,7 +268,8 @@
 
     .apple,
     .leaf {
-        width: clamp(50px, 18vw, 120px);
+        width: clamp(100px, 35vw, 190px);
+        /* ← was clamp(50px, 18vw, 120px) */
         opacity: 0.7;
     }
 
