@@ -29,14 +29,14 @@ const FLAVOURS = [
     },
     {
         key: "strawberry",
-        label: "STRAWBERRY",
+        label: "STRAW BERRY",
         bg: "#e8183a",
         can: strawberryCan,
         fruit: strawberry,
     },
     {
         key: "blueberry",
-        label: "BLUEBERRY",
+        label: "BLUE BERRY",
         bg: "#2a3bb7",
         can: blueberryCan,
         fruit: blueberry,
@@ -57,7 +57,7 @@ const FLAVOURS = [
     },
 ];
 
-const INTERVAL = 3000;
+const INTERVAL = 1800;
 
 export default function Hero() {
     const [current, setCurrent] = useState(0);
