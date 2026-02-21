@@ -1,8 +1,10 @@
+/* =====================================================
+   HERO – base layout  (unchanged from your original)
+   ===================================================== */
 .hero {
     width: 100%;
     min-height: 100vh;
     min-height: 100svh;
-    background-color: #5dbb15;
     position: relative;
     overflow: hidden;
 
@@ -13,8 +15,14 @@
 
     padding: 80px 1rem 2rem;
     z-index: 1;
+
+    /* smooth background colour transition between slides */
+    transition: background-color 0.6s ease;
 }
 
+/* =====================================================
+   TITLE
+   ===================================================== */
 .title {
     font-size: clamp(2.5rem, 12vw, 9rem);
     color: white;
@@ -24,6 +32,9 @@
     z-index: 5;
 }
 
+/* =====================================================
+   CAN
+   ===================================================== */
 .can {
     width: clamp(200px, 60vw, 1000px);
     position: absolute;
@@ -34,7 +45,9 @@
     pointer-events: none;
 }
 
-
+/* =====================================================
+   FRUIT & LEAF  (positions unchanged from original)
+   ===================================================== */
 .apple,
 .leaf {
     position: absolute;
@@ -42,8 +55,7 @@
     pointer-events: none;
 }
 
-/* ================= APPLES ================= */
-
+/* ── Apples ── */
 .appleLeft {
     top: 10%;
     left: 5%;
@@ -73,8 +85,7 @@
     transform: rotate(-30deg);
 }
 
-/* ================= LEAVES ================= */
-
+/* ── Leaves ── */
 .leaf1 {
     top: 25%;
     left: 50%;
@@ -92,25 +103,116 @@
     left: 25%;
 }
 
-/* ================= MOBILE CLEANUP ================= */
+/* =====================================================
+   SLIDE-IN ANIMATIONS
+   Each element fades + pops in from a slightly different
+   direction so the transition feels lively, not flat.
+   ===================================================== */
 
-@media (max-width: 768px) {
-
-    /* Reduce clutter on small screens */
-    .appleRight2,
-    .appleRight3,
-    .leaf2 {
-        display: none;
+/* Title slides in from the left */
+@keyframes slideInTitle {
+    0% {
+        opacity: 0;
+        transform: rotate(-15deg) translateX(-60px);
     }
 
-    .apple,
-    .leaf {
-        width: clamp(50px, 18vw, 120px);
-        opacity: 0.7;
+    100% {
+        opacity: 1;
+        transform: rotate(-15deg) translateX(0);
     }
 }
 
+.slide-in {
+    animation: slideInTitle 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
 
+/* Can zooms in from centre */
+@keyframes slideInCan {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(-15deg) scale(0.7);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(-15deg) scale(1);
+    }
+}
+
+.slide-in-can {
+    animation: slideInCan 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Fruits fade + drift upward */
+@keyframes slideInFruit {
+    0% {
+        opacity: 0;
+        translate: 0 20px;
+    }
+
+    100% {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+.slide-in-fruit {
+    animation: slideInFruit 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+    /* slight stagger so they don't all pop at once */
+    animation-delay: 0.05s;
+}
+
+/* Leaves fade + drift downward */
+@keyframes slideInLeaf {
+    0% {
+        opacity: 0;
+        translate: 0 -15px;
+    }
+
+    100% {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+.slide-in-leaf {
+    animation: slideInLeaf 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.1s;
+}
+
+/* =====================================================
+   DOT INDICATORS
+   ===================================================== */
+.dots {
+    position: absolute;
+    bottom: 110px;
+    /* sits just above the buttons */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    padding: 0;
+}
+
+.dot--active {
+    background: #ffffff;
+    transform: scale(1.35);
+}
+
+/* =====================================================
+   BUTTONS  (unchanged)
+   ===================================================== */
 .buttons {
     position: absolute;
     bottom: 40px;
@@ -132,8 +234,7 @@
     border: none;
     cursor: pointer;
     width: 100%;
-
-    transition: all 0.3s ease
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
@@ -141,10 +242,26 @@
     color: rgb(244, 240, 240);
 }
 
+.btn2 {
+    width: 100%;
+}
 
-
-/*extra*/
+/* =====================================================
+   MOBILE  (unchanged positions, same breakpoints)
+   ===================================================== */
 @media (max-width: 768px) {
+
+    .appleRight2,
+    .appleRight3,
+    .leaf2 {
+        display: none;
+    }
+
+    .apple,
+    .leaf {
+        width: clamp(50px, 18vw, 120px);
+        opacity: 0.7;
+    }
 
     .hero {
         padding-top: 4rem;
@@ -159,6 +276,7 @@
         flex-direction: column;
         gap: 1rem;
         bottom: 20px;
+        width: 100%;
     }
 
     .can {
@@ -177,4 +295,8 @@
         opacity: 0.8;
     }
 
+    /* push dots up a bit more on mobile to clear buttons */
+    .dots {
+        bottom: 160px;
+    }
 }
