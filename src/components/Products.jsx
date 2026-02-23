@@ -15,21 +15,63 @@ import { useEffect } from "react";
 
 function Products() {
 
-    // Mobile: flip on click / re-click
     useEffect(() => {
-        if (!window.matchMedia("(hover: none)").matches) return;
+        const cards = document.querySelectorAll(".card-inner");
 
-        const handleTouch = (e) => {
-            const inner = e.target.closest(".card-inner");
-            if (inner) {
-                e.preventDefault(); // ✅ stops ghost click events
-                inner.classList.toggle("is-flipped");
-            }
-        };
+        cards.forEach((card) => {
+            let startX = 0;
+            let isDragging = false;
+            const MAX_ROTATE = 40; // ✅ max degrees it can tilt (never fully flips)
 
-        document.addEventListener("touchstart", handleTouch, { passive: false });
-        return () => document.removeEventListener("touchstart", handleTouch);
-    }, []);
+            const getRotation = (deltaX) => {
+                // ✅ clamp between -MAX_ROTATE and +MAX_ROTATE
+                return Math.max(-MAX_ROTATE, Math.min(MAX_ROTATE, deltaX * 0.3));
+            };
+
+            // ── Touch (mobile) ──
+            card.addEventListener("touchstart", (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+
+            card.addEventListener("touchmove", (e) => {
+                if (!isDragging) return;
+                const deltaX = e.touches[0].clientX - startX;
+                card.style.transition = "none";
+                card.style.transform = `rotateY(${getRotation(deltaX)}deg)`;
+            }, { passive: true });
+
+            card.addEventListener("touchend", () => {
+                isDragging = false;
+                // ✅ always snap back to front when finger lifts
+                card.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
+                card.style.transform = "rotateY(0deg)";
+            });
+
+            // ── Mouse (laptop) ──
+            card.addEventListener("mousedown", (e) => {
+                startX = e.clientX;
+                isDragging = true;
+            });
+
+            card.addEventListener("mousemove", (e) => {
+                if (!isDragging) return;
+                const deltaX = e.clientX - startX;
+                card.style.transition = "none";
+                card.style.transform = `rotateY(${getRotation(deltaX)}deg)`;
+            });
+
+            const snapBack = () => {
+                if (!isDragging) return;
+                isDragging = false;
+                card.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
+                card.style.transform = "rotateY(0deg)";
+            };
+
+            card.addEventListener("mouseup", snapBack);
+            document.addEventListener("mouseup", snapBack); // safety
+        });
+    }, []); // ✅ empty array = runs once only
 
     return (
         <section id="products" className="products">
