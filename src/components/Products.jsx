@@ -15,8 +15,9 @@ import { useEffect } from "react";
 
 function Products() {
 
+    // Mobile: flip on click / re-click
     useEffect(() => {
-        if (!window.matchMedia("(hover: none)").matches) return; // laptop — skip
+        if (!window.matchMedia("(hover: none)").matches) return; // skip on laptop
 
         const handleClick = (e) => {
             const inner = e.target.closest(".card-inner");
@@ -24,10 +25,8 @@ function Products() {
         };
 
         document.addEventListener("click", handleClick);
-
-        // ✅ cleanup on unmount — prevents duplicate listeners
-        return () => document.removeEventListener("click", handleClick);
-    }, []); // ✅ empty array = runs once only
+        return () => document.removeEventListener("click", handleClick); // cleanup
+    }, []);
 
     return (
         <section id="products" className="products">
