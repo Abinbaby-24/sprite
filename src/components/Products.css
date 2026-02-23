@@ -75,7 +75,12 @@
     border: 6px solid #0a5f0a;
     background: none;
     /* ✅ no bg here — handled by front/back */
+    touch-action: manipulation;
+    /* ✅ prevents double-tap zoom */
+    -webkit-tap-highlight-color: transparent;
+    /* ✅ removes grey tap flash */
 }
+
 
 /* Laptop: flip on hover */
 @media (hover: hover) {

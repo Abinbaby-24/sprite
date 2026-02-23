@@ -17,15 +17,18 @@ function Products() {
 
     // Mobile: flip on click / re-click
     useEffect(() => {
-        if (!window.matchMedia("(hover: none)").matches) return; // skip on laptop
+        if (!window.matchMedia("(hover: none)").matches) return;
 
-        const handleClick = (e) => {
+        const handleTouch = (e) => {
             const inner = e.target.closest(".card-inner");
-            if (inner) inner.classList.toggle("is-flipped");
+            if (inner) {
+                e.preventDefault(); // ✅ stops ghost click events
+                inner.classList.toggle("is-flipped");
+            }
         };
 
-        document.addEventListener("click", handleClick);
-        return () => document.removeEventListener("click", handleClick); // cleanup
+        document.addEventListener("touchstart", handleTouch, { passive: false });
+        return () => document.removeEventListener("touchstart", handleTouch);
     }, []);
 
     return (
