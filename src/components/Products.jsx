@@ -23,38 +23,26 @@ function Products() {
             let startX = 0;
             let isDragging = false;
             let isFlipped = false;
-            const MAX_TILT = 40; // laptop only — max tilt degrees
+            const MAX_TILT = 40;
 
-            // ── MOBILE: full flip ──
+            // ── MOBILE: tap to flip / tap to reflip ──
             if (isMobile) {
                 card.addEventListener("touchstart", (e) => {
                     startX = e.touches[0].clientX;
-                    isDragging = true;
-                }, { passive: true });
-
-                card.addEventListener("touchmove", (e) => {
-                    if (!isDragging) return;
-                    const deltaX = e.touches[0].clientX - startX;
-                    const base = isFlipped ? 180 : 0;
-                    const drag = base + deltaX * 0.4;
-                    card.style.transition = "none";
-                    card.style.transform = `rotateY(${drag}deg)`;
                 }, { passive: true });
 
                 card.addEventListener("touchend", (e) => {
-                    isDragging = false;
                     const deltaX = e.changedTouches[0].clientX - startX;
-                    card.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
 
-                    if (Math.abs(deltaX) > 60) {
-                        // ✅ enough drag — complete the flip
-                        isFlipped = deltaX < 0 ? true : false;
+                    // ✅ only flip if it was a tap, not a scroll
+                    if (Math.abs(deltaX) < 10) {
+                        isFlipped = !isFlipped;
+                        card.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
+                        card.style.transform = `rotateY(${isFlipped ? 180 : 0}deg)`;
                     }
-                    // snap to nearest face
-                    card.style.transform = `rotateY(${isFlipped ? 180 : 0}deg)`;
                 });
 
-                // ── LAPTOP: tilt/peek only ──
+                // ── LAPTOP: tilt/peek on drag ──
             } else {
                 const getRotation = (deltaX) => {
                     return Math.max(-MAX_TILT, Math.min(MAX_TILT, deltaX * 0.3));
