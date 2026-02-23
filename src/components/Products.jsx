@@ -17,61 +17,74 @@ function Products() {
 
     useEffect(() => {
         const cards = document.querySelectorAll(".card-inner");
+        const isMobile = window.matchMedia("(hover: none)").matches;
 
         cards.forEach((card) => {
             let startX = 0;
             let isDragging = false;
-            const MAX_ROTATE = 40; // ✅ max degrees it can tilt (never fully flips)
+            let isFlipped = false;
+            const MAX_TILT = 40; // laptop only — max tilt degrees
 
-            const getRotation = (deltaX) => {
-                // ✅ clamp between -MAX_ROTATE and +MAX_ROTATE
-                return Math.max(-MAX_ROTATE, Math.min(MAX_ROTATE, deltaX * 0.3));
-            };
+            // ── MOBILE: full flip ──
+            if (isMobile) {
+                card.addEventListener("touchstart", (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                }, { passive: true });
 
-            // ── Touch (mobile) ──
-            card.addEventListener("touchstart", (e) => {
-                startX = e.touches[0].clientX;
-                isDragging = true;
-            }, { passive: true });
+                card.addEventListener("touchmove", (e) => {
+                    if (!isDragging) return;
+                    const deltaX = e.touches[0].clientX - startX;
+                    const base = isFlipped ? 180 : 0;
+                    const drag = base + deltaX * 0.4;
+                    card.style.transition = "none";
+                    card.style.transform = `rotateY(${drag}deg)`;
+                }, { passive: true });
 
-            card.addEventListener("touchmove", (e) => {
-                if (!isDragging) return;
-                const deltaX = e.touches[0].clientX - startX;
-                card.style.transition = "none";
-                card.style.transform = `rotateY(${getRotation(deltaX)}deg)`;
-            }, { passive: true });
+                card.addEventListener("touchend", (e) => {
+                    isDragging = false;
+                    const deltaX = e.changedTouches[0].clientX - startX;
+                    card.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
 
-            card.addEventListener("touchend", () => {
-                isDragging = false;
-                // ✅ always snap back to front when finger lifts
-                card.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
-                card.style.transform = "rotateY(0deg)";
-            });
+                    if (Math.abs(deltaX) > 60) {
+                        // ✅ enough drag — complete the flip
+                        isFlipped = deltaX < 0 ? true : false;
+                    }
+                    // snap to nearest face
+                    card.style.transform = `rotateY(${isFlipped ? 180 : 0}deg)`;
+                });
 
-            // ── Mouse (laptop) ──
-            card.addEventListener("mousedown", (e) => {
-                startX = e.clientX;
-                isDragging = true;
-            });
+                // ── LAPTOP: tilt/peek only ──
+            } else {
+                const getRotation = (deltaX) => {
+                    return Math.max(-MAX_TILT, Math.min(MAX_TILT, deltaX * 0.3));
+                };
 
-            card.addEventListener("mousemove", (e) => {
-                if (!isDragging) return;
-                const deltaX = e.clientX - startX;
-                card.style.transition = "none";
-                card.style.transform = `rotateY(${getRotation(deltaX)}deg)`;
-            });
+                card.addEventListener("mousedown", (e) => {
+                    startX = e.clientX;
+                    isDragging = true;
+                });
 
-            const snapBack = () => {
-                if (!isDragging) return;
-                isDragging = false;
-                card.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
-                card.style.transform = "rotateY(0deg)";
-            };
+                card.addEventListener("mousemove", (e) => {
+                    if (!isDragging) return;
+                    const deltaX = e.clientX - startX;
+                    card.style.transition = "none";
+                    card.style.transform = `rotateY(${getRotation(deltaX)}deg)`;
+                });
 
-            card.addEventListener("mouseup", snapBack);
-            document.addEventListener("mouseup", snapBack); // safety
+                const snapBack = () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    card.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
+                    card.style.transform = "rotateY(0deg)";
+                };
+
+                card.addEventListener("mouseup", snapBack);
+                document.addEventListener("mouseup", snapBack);
+            }
         });
-    }, []); // ✅ empty array = runs once only
+    }, []);
+    // ✅ empty array = runs once only
 
     return (
         <section id="products" className="products">
