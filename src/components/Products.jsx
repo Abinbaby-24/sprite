@@ -15,64 +15,16 @@ import { useEffect } from "react";
 
 function Products() {
 
+    // Mobile: flip on click
     useEffect(() => {
-        const cards = document.querySelectorAll(".card-inner");
-        const isMobile = window.matchMedia("(hover: none)").matches;
-
-        cards.forEach((card) => {
-            let startX = 0;
-            let isDragging = false;
-            let isFlipped = false;
-            const MAX_TILT = 40;
-
-            // ── MOBILE: tap to flip / tap to reflip ──
-            if (isMobile) {
-                card.addEventListener("touchstart", (e) => {
-                    startX = e.touches[0].clientX;
-                }, { passive: true });
-
-                card.addEventListener("touchend", (e) => {
-                    const deltaX = e.changedTouches[0].clientX - startX;
-
-                    // ✅ only flip if it was a tap, not a scroll
-                    if (Math.abs(deltaX) < 10) {
-                        isFlipped = !isFlipped;
-                        card.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
-                        card.style.transform = `rotateY(${isFlipped ? 180 : 0}deg)`;
-                    }
+        if (window.matchMedia("(hover: none)").matches) {
+            document.querySelectorAll(".card-inner").forEach((card) => {
+                card.addEventListener("click", () => {
+                    card.classList.toggle("is-flipped");
                 });
-
-                // ── LAPTOP: tilt/peek on drag ──
-            } else {
-                const getRotation = (deltaX) => {
-                    return Math.max(-MAX_TILT, Math.min(MAX_TILT, deltaX * 0.3));
-                };
-
-                card.addEventListener("mousedown", (e) => {
-                    startX = e.clientX;
-                    isDragging = true;
-                });
-
-                card.addEventListener("mousemove", (e) => {
-                    if (!isDragging) return;
-                    const deltaX = e.clientX - startX;
-                    card.style.transition = "none";
-                    card.style.transform = `rotateY(${getRotation(deltaX)}deg)`;
-                });
-
-                const snapBack = () => {
-                    if (!isDragging) return;
-                    isDragging = false;
-                    card.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
-                    card.style.transform = "rotateY(0deg)";
-                };
-
-                card.addEventListener("mouseup", snapBack);
-                document.addEventListener("mouseup", snapBack);
-            }
-        });
+            });
+        }
     }, []);
-    // ✅ empty array = runs once only
 
     return (
         <section id="products" className="products">
