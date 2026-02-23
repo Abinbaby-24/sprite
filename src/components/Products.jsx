@@ -15,16 +15,19 @@ import { useEffect } from "react";
 
 function Products() {
 
-    // Mobile: flip on click
     useEffect(() => {
-        if (window.matchMedia("(hover: none)").matches) {
-            document.querySelectorAll(".card-inner").forEach((card) => {
-                card.addEventListener("click", () => {
-                    card.classList.toggle("is-flipped");
-                });
-            });
-        }
-    }, []);
+        if (!window.matchMedia("(hover: none)").matches) return; // laptop — skip
+
+        const handleClick = (e) => {
+            const inner = e.target.closest(".card-inner");
+            if (inner) inner.classList.toggle("is-flipped");
+        };
+
+        document.addEventListener("click", handleClick);
+
+        // ✅ cleanup on unmount — prevents duplicate listeners
+        return () => document.removeEventListener("click", handleClick);
+    }, []); // ✅ empty array = runs once only
 
     return (
         <section id="products" className="products">
